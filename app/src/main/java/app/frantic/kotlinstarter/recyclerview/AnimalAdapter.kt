@@ -35,6 +35,9 @@ class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
 //   val tvAnimalType = view.tv_animal_type
 
     fun bind(animal: Animal, clickListener: (Animal) -> Unit){
+//        val b: String?  = null
+//        print(b?.length ?: -1)
+
         itemView.tv_animal_type.text = animal.name;
         var fly = if(animal.canfly) "Yes" else "NO"
         itemView.tv_animal_fly.text = "Can Fly? "+ fly;
