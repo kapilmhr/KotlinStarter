@@ -1,5 +1,6 @@
 package app.frantic.kotlinstarter.retrofit
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,6 +10,7 @@ import app.frantic.kotlinstarter.retrofit.adapter.FlowerAdapter
 import app.frantic.kotlinstarter.retrofit.model.FlowerModel
 import app.frantic.kotlinstarter.retrofit.model.data.Flower
 import app.frantic.kotlinstarter.retrofit.presenter.FlowerPresenter
+import app.frantic.kotlinstarter.retrofit.view.FlowerDetailActivity
 import kotlinx.android.synthetic.main.activity_flowers.*
 
 class FlowersActivity : AppCompatActivity(),FlowerContract.FlowerView {
@@ -23,12 +25,15 @@ class FlowersActivity : AppCompatActivity(),FlowerContract.FlowerView {
     }
 
     override fun onSuccessFlower(list: List<Flower>) {
-        /*for(i in 0 until list.size){
-            println(i)
-            println(list.get(i).name)
-        }*/
-        recyclerView.adapter = FlowerAdapter(list)
+        recyclerView.adapter = FlowerAdapter(list,{flower:Flower->flowerClicked(flower)})
 
+    }
+
+    fun flowerClicked(flower: Flower){
+        println(flower.name)
+        var i = Intent(this,FlowerDetailActivity::class.java)
+        i.putExtra("Flower",flower)
+        startActivity(i)
     }
 
     override fun onErrorFlower(error: String) {

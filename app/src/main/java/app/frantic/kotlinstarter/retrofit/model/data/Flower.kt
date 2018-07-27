@@ -1,6 +1,8 @@
 package app.frantic.kotlinstarter.retrofit.model.data
 
-class Flower {
+import java.io.Serializable
+
+class Flower : Serializable{
     var category: String
     var price: Double
     var instructions: String
