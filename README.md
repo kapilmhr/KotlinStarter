@@ -12,3 +12,7 @@ Basic Kotlin Usage
   - fetched data from server using retrofit
   - data are bind in the recyclerview
   - images are shown using GLIDE
+  
+  ### 3. SharedPreference in Kotlin
+  - Singleton
+  - getter and setter for attributes
